@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // Containers/Pages
 import Full from './../../../ui/containers/Full/Full';
 import Dashboard from './../../../ui/pages/Dashboard/Dashboard';
@@ -12,7 +12,7 @@ function withProps(Component, props) {
 }
 
 export const routes = (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" name="Home" component={Full}>
       <IndexRoute component={Dashboard} />
       <Route path="dashboard" name="Dashboard" component={Dashboard} />
