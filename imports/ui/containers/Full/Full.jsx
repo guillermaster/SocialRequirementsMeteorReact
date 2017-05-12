@@ -9,7 +9,7 @@ import Breadcrumbs from 'react-breadcrumbs';
 class Full extends Component {
   render() {
     return (
-      <div className="app">
+      <div className="app header-fixed">
         <Header />
           <div className="app-body">
             <Sidebar {...this.props}/>

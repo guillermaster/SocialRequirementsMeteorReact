@@ -8,10 +8,10 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn container">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-8">
               Requiremens feed goes here
           </div>
-          <div className="col-sm-12 col-md-8">
+          <div className="col-md-4">
             right content goes here
           </div>
         </div>

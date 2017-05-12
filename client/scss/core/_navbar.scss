@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   background-color: $navbar-bg;
+  overflow: hidden;
   @include borders($navbar-border);
 
   .navbar-brand {
