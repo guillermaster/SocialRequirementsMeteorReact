@@ -5,11 +5,14 @@ Meteor.startup(function(){
   // code to run on server at startup
   if (Requirements.find().count() == 0){
     	for (var i=1;i<23;i++){
+        let status = i%3==0? "draft" : "approved";
     		Requirements.insert(
     			{
     				title: "Requirement #"+i,
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus porttitor tempus. Ut feugiat sodales erat, eu sagittis lacus feugiat sit amet. In euismod malesuada mattis. Vestibulum ut lacinia turpis, id finibus lectus. Morbi enim ante, finibus ac porta id, cursus vel risus. Nam pharetra quam nibh, at ",
-            createdOn: Date.now()
+            createdOn: Date.now(),
+            createdBy: "guillermaster@gmail.com",
+            status: status
     			}
     		);
     	}// end of for insert images

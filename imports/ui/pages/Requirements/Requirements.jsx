@@ -1,55 +1,41 @@
 import React, { Component } from 'react';
-import ReqCard from './../../components/Body/RequirementCard/ReqCard';
-import { getMockRequirements } from './../../../api/requirements/requirements.js';
+import RequirementsFeedCards from './../../components/Body/RequirementsFeed/RequirementsFeedCards';
+
+var lastScrollTop = 0;
 
 class Requirements extends Component {
 
     constructor(props){
-        super(props);
-        this.state = {
-            filter: props.filter
-        }
+      super(props);
+      this.state = { requirementsLimit: 12 };
+      this.handleScroll = this.handleScroll.bind(this);
     }
 
-    getRequirements() {
-        let request = {
-            filter: this.state.filter
-        }
-        let requirements = getMockRequirements(request);
-        return requirements;
+    componentDidMount() {
+      window.addEventListener('scroll', this.handleScroll);
     }
 
-    // add a set of requirement elements to a bootstrap div row
-    renderRequirementsRow(requirements, key){
-        return (
-            <div key={key} className="row">
-                { requirements }
-            </div>
-        )
+    componentWillUnmount() {
+      debugger
+        window.removeEventListener('scroll', this.handleScroll);
     }
 
-    /// generates a list of requirement cards elements to be rendered
-    requirementsRowsList() {
-        let reqs = [];
-        let reqRows = [];
+    handleScroll(){
+      let scrollTop = event.srcElement.body.scrollTop;
+      if(lastScrollTop==0) lastScrollTop = scrollTop;
+      let height = event.srcElement.defaultView.screen.height;
+      let docHeight = event.srcElement.documentElement.offsetHeight;
 
-        this.getRequirements().map((req, i) => {
-            if(reqs.length === 6){
-                reqRows.push(this.renderRequirementsRow(reqs, i/6));
-                reqs = [];
-            }
-            reqs.push(<ReqCard key={req.id} requirement={req} />);
-        });
-
-        if(reqs.length > 0) reqRows.push(this.renderRequirementsRow(reqs, 0));
-
-        return reqRows;
+      if(scrollTop > lastScrollTop && (scrollTop+height) > docHeight){
+        this.setState({ requirementsLimit: this.state.requirementsLimit + 6 });
+      }
+      lastScrollTop = scrollTop;
     }
 
     render() {
         return (
             <div className="animated fadeIn">
-                { this.requirementsRowsList() }
+                <RequirementsFeedCards max={this.state.requirementsLimit} filter={this.props.filter} />
             </div>
         )
     }

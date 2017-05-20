@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RequirementsFeed from './../../components/Body/RequirementsFeed/RequirementsFeed';
 //import SummaryWidget from './../../components/Body/SummaryWidgets/SummaryWidget';
-//import RequirementsFeed from './../../containers/Meteor/RequirementsFeed';
 
 var lastScrollTop = 0;
 
@@ -10,14 +9,15 @@ class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = { requirementsLimit: 4 };
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-      window.removeEventListener('scroll', this.handleScroll.bind(this));
+      window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll(){

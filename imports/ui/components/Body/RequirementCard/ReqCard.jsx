@@ -10,7 +10,7 @@ class ReqCard extends Component {
                         {this.props.requirement.title}
                     </div>
                     <div className="card-block">
-                        {this.props.requirement.description}
+                        {this.props.requirement.content}
                     </div>
                 </div>
             </div>

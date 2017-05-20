@@ -19,7 +19,7 @@ export const routes = (
       <Route path="requirements/" name="Requirements">
         <IndexRoute component={Requirements} />
         <Route path="all" name="All Requirements" component={Requirements} />
-        <Route path="draft" name="Drafts" component={withProps(Requirements, { filter: 'draft' })} />
+        <Route path="draft" name="Drafts" component={withProps(Requirements, { filter: {status: 'draft'} })} />
       </Route>
     </Route>
   </Router>
