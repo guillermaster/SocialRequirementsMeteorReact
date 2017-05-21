@@ -26,6 +26,7 @@ class Full extends Component {
                 {this.props.children}
               </div>
             </main>
+            <Aside />
           </div>
         <Footer />
       </div>
