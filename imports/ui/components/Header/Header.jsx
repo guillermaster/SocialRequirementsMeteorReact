@@ -97,12 +97,12 @@ class Header extends Component {
           </ul>
 
           <Modal isOpen={this.state.modalNewRequirement} toggle={this.toggleNewRequirement} className={'modal-lg ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleNewRequirement}>Modal title</ModalHeader>
+                  <ModalHeader toggle={this.toggleNewRequirement}>New Requirement</ModalHeader>
                   <ModalBody>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <textarea id="textarea-input" name="textarea-input" rows="9" className="form-control" placeholder="Describe your requirement here"></textarea>
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="primary" onClick={this.toggleNewRequirement}>Do Something</Button>{' '}
+                    <Button color="primary" onClick={this.toggleNewRequirement}>Submit requirement</Button>{' '}
                     <Button color="secondary" onClick={this.toggleNewRequirement}>Cancel</Button>
                   </ModalFooter>
                 </Modal>
