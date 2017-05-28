@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import { Dropdown, DropdownMenu, DropdownItem } from 'reactstrap';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import NewRequirementModal from './NewRequirementModal';
 
 class Header extends Component {
 
@@ -9,6 +9,7 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.toggleNewRequirement = this.toggleNewRequirement.bind(this);
+    this.submitNewRequirement = this.submitNewRequirement.bind(this);
     this.state = {
       dropdownOpen: false,
       modalNewRequirement: false
@@ -26,6 +27,11 @@ class Header extends Component {
     this.setState({
       modalNewRequirement: !this.state.modalNewRequirement
     });
+  }
+
+  submitNewRequirement(){
+    this.refs.newRequirementModal.submit();
+    this.toggleNewRequirement();
   }
 
   sidebarToggle(e) {
@@ -96,16 +102,13 @@ class Header extends Component {
           </li>
           </ul>
 
-          <Modal isOpen={this.state.modalNewRequirement} toggle={this.toggleNewRequirement} className={'modal-lg ' + this.props.className}>
-                  <ModalHeader toggle={this.toggleNewRequirement}>New Requirement</ModalHeader>
-                  <ModalBody>
-                    <textarea id="textarea-input" name="textarea-input" rows="9" className="form-control" placeholder="Describe your requirement here"></textarea>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="primary" onClick={this.toggleNewRequirement}>Submit requirement</Button>{' '}
-                    <Button color="secondary" onClick={this.toggleNewRequirement}>Cancel</Button>
-                  </ModalFooter>
-                </Modal>
+          <NewRequirementModal
+            ref="newRequirementModal"
+            isOpen={this.state.modalNewRequirement}
+            onToggle={this.toggleNewRequirement}
+            onSubmit={this.submitNewRequirement}
+            class={'modal-lg ' + this.props.className}  />
+
       </header>
     )
   }
