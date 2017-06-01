@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Meteor } from 'meteor/meteor';
 
 const titleStyle = {
   color: '#626060',
@@ -30,6 +31,7 @@ class NewRequirementModal extends Component {
 
   submit(){
     console.log("submit");
+    Meteor.call('requirements.insert', this.state.title, this.state.content);
   }
 
   render(){
