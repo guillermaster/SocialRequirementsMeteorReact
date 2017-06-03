@@ -5,5 +5,10 @@ import { routes } from '../imports/startup/client/routes/routes.jsx';
 import  '/imports/api/requirements/requirements.js';
 
 Meteor.startup(() => {
-  render(routes, document.getElementById('render-target'));
+  //if (Meteor.user()){
+    render(routes, document.getElementById('render-target'));
+  //}
+  //else{
+    console.log('Access denied');
+  //}
 });
