@@ -1,8 +1,48 @@
 import { Meteor } from 'meteor/meteor';
 import '/imports/api/requirements/requirements.js';
+import '/imports/api/companies/companies.js';
 
 Meteor.startup(function(){
   // code to run on server at startup
+  InsertMockUpCompanies();
+  InsertMockUpRequirements();
+});
+
+function InsertMockUpCompanies(){
+  Companies.remove({});
+  //if(Companies.find().count() == 0){
+    Companies.insert(
+      {
+        name: 'Ignite',
+        phone: '12222312312',
+        address: 'South Street',
+  			city: 'Manchester',
+        state: 'Great Manchester',
+  			postalCode: '9580',
+  			country: 'United Kingdom',
+        createdOn: new Date(),
+        createdBy: 'guillermo',
+        modifiedOn: new Date()
+      }
+    );
+    Companies.insert(
+      {
+        name: 'Facebook',
+        phone: '12222312312',
+        address: 'South Street',
+  			city: 'Palo Alto',
+        state: 'California',
+  			postalCode: '9580',
+  			country: 'United States',
+        createdOn: new Date(),
+        createdBy: 'guillermo',
+        modifiedOn: new Date()
+      }
+    );
+  //}
+}
+
+function InsertMockUpRequirements(){
   if (Requirements.find().count() == 0){
     	for (var i=1;i<23;i++){
         let status = i%3==0? "draft" : "approved";
@@ -15,8 +55,8 @@ Meteor.startup(function(){
             status: status
     			}
     		);
-    	}// end of for insert images
-  	// count the images!
-  	console.log("startup.js says: "+Requirements.find().count());
-  }// end of if have no images
-});
+    	}// end of for insert requirements
+  	// count the requirements!
+  	//console.log("startup.js says: "+Requirements.find().count());
+  }
+}
